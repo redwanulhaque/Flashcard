@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+
+// Set
+model StudyTool {
+  id         Int         @id @default(autoincrement())
+  name       String
+  flashcards Flashcard[] @relation("ToolFlashcards")
+}
+
+
+
+
+// Individual Flashcard
+model Flashcard {
+  id       Int       @id @default(autoincrement())
+  question String
+  answer   String
+  toolId   Int
+  tool     StudyTool @relation("ToolFlashcards", fields: [toolId], references: [id])
+}
