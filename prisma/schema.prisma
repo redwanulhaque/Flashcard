@@ -14,7 +14,7 @@ datasource db {
 
 
 
-// Set
+// Flashcard Deck
 model StudyTool {
   id         Int         @id @default(autoincrement())
   name       String

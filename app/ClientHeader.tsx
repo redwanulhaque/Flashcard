@@ -80,16 +80,21 @@ export default function ClientHeader() {
   /*-------------------- Reset handler --------------------*/
 
   const handleReset = async () => {
+
     if (!confirm("This will clear ALL study tools and flashcards. Continue?")) return;
 
     try {
+
       const res = await fetch("/api/study-tools", { method: "DELETE" });
       if (!res.ok) throw new Error("Reset failed");
       window.location.href = "/"; // reload app after reset
-    } catch (err) {
+    } 
+    
+    catch (err) {
       console.error(err);
       alert("Failed to reset database");
     }
+
   };
 
 
